@@ -1,7 +1,7 @@
 .panel {
 	font-size: 18px;
 	color: white;
-	background: rgba(255,255,255,0.05);
+	background: rgba(255, 255, 255, 0.05);
 	border-radius: 10px;
 	padding: 40px;
 	margin-bottom: 20px;
@@ -38,4 +38,15 @@
 	line-height: 21px;
 	outline: none;
 	box-shadow: none;
+}
+
+.notification {
+	font-size: 16px;
+	margin: 20px;
+	color: white;
+	display: none;
+}
+
+.notification_active {
+	display: block;
 }
