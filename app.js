@@ -18,3 +18,13 @@ function inputChanged(e) {
         submitForm();
     }
 }
+
+const panelTest = 'Кнопка';
+const panelClass = 'button';
+const newElement = document.createElement('div');
+newElement.setAttribute('user-id', 1);
+newElement.classList.add('panel');
+
+newElement.innerHTML = `<dutton class=${panelClass}>${panelTest}</button>`
+
+document.querySelector('.test').appendChild(newElement);
