@@ -8,9 +8,6 @@ function submitForm() {
     document.querySelector('.panel').innerText = input;
     document.querySelector('.input').value = '';
     document.querySelector('.notification').classList.add('notification_active');
-    console.log(document.querySelector('.notification').getAttribute('class'));
-    document.querySelector('.notification').getAttribute('class');
-    document.querySelector('.notification').setAttribute('key', '1')
 }
 
 function inputChanged(e) {
@@ -19,12 +16,11 @@ function inputChanged(e) {
     }
 }
 
-const panelTest = 'Кнопка';
-const panelClass = 'button';
-const newElement = document.createElement('div');
-newElement.setAttribute('user-id', 1);
-newElement.classList.add('panel');
+localStorage.setItem('token', 'sjibvnsjt');
+localStorage.setItem('token1', 1);
+localStorage.setItem('token2', true);
 
-newElement.innerHTML = `<dutton class=${panelClass}>${panelTest}</button>`
+console.log(localStorage.getItem('token2'));
 
-document.querySelector('.test').appendChild(newElement);
+localStorage.removeItem('token1');
+localStorage.clear();
