@@ -16,11 +16,8 @@ function inputChanged(e) {
     }
 }
 
-localStorage.setItem('token', 'sjibvnsjt');
-localStorage.setItem('token1', 1);
-localStorage.setItem('token2', true);
+const obj = JSON.parse('{ "a": 1 }');
+console.log(obj);
 
-console.log(localStorage.getItem('token2'));
-
-localStorage.removeItem('token1');
-localStorage.clear();
+const str = JSON.stringify(obj);
+console.log(str);
