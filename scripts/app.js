@@ -2,6 +2,7 @@
 
 let habbits = [];
 const HABBIT_KEY = 'HABBIT_KEY'
+let globalActivehabbitId;
 
 /* page */
 
@@ -103,6 +104,8 @@ function rerenderContent(activeHabbit) {
 }
 
 function rerender(activeHabbitId) {
+
+    globalActivehabbitId = activeHabbitId;
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
     rerenderMenu(activeHabbit);
     rerenderHead(activeHabbit);
@@ -112,10 +115,29 @@ function rerender(activeHabbitId) {
 /* work with days */
 
 function addDays(event) {
+    const form = event.target;
     event.preventDefault();
     console.log(event);
     const data = new FormData(event.target);
-    console.log(data);
+    const comment = data.get('comment'); //По артрибуту name
+    form['comment'].classList.remove('error');
+
+    if (!comment) {
+        form['comment'].classList.add('error');
+        console.log(form['comment']);
+    }
+    habbits = habbits.map(habbit => {
+        if (habbit.id === globalActivehabbitId) {
+            return {
+                ...habbit,
+                days: habbit.days.concat([{ comment }])
+            }
+        }
+        return habbit;
+    })
+    rerender(globalActivehabbitId);
+    form['comment'].value = '';
+    saveData();
 }
 
 /* init */
