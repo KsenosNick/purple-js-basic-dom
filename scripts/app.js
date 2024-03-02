@@ -92,9 +92,10 @@ function rerenderContent(activeHabbit) {
         habbitDay.setAttribute('class', 'habbit__day');
         habbitComment.setAttribute('class', 'habbit__comment');
         habbitDelete.setAttribute('class', 'habbit__delete');
+        habbitDelete.setAttribute('onClick', `deleteDay(${i})`);
         habbitDay.innerText = `День ${i + 1}`;
         habbitComment.innerText = days[i].comment;
-        habbitDelete.innerHTML = `<img src="./images/delete.svg" alt="Удалить день ${i + 1}" />`;
+        habbitDelete.innerHTML = `<img src="./images/delete.svg" alt="Удалить день ${i + 1}"/>`;
 
         habbit.appendChild(habbitDay);
         habbit.appendChild(habbitComment);
@@ -106,6 +107,7 @@ function rerenderContent(activeHabbit) {
 function rerender(activeHabbitId) {
 
     globalActivehabbitId = activeHabbitId;
+    console.log(habbits);
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
     rerenderMenu(activeHabbit);
     rerenderHead(activeHabbit);
@@ -117,14 +119,12 @@ function rerender(activeHabbitId) {
 function addDays(event) {
     const form = event.target;
     event.preventDefault();
-    console.log(event);
     const data = new FormData(event.target);
     const comment = data.get('comment'); //По артрибуту name
     form['comment'].classList.remove('error');
 
     if (!comment) {
         form['comment'].classList.add('error');
-        console.log(form['comment']);
     }
     habbits = habbits.map(habbit => {
         if (habbit.id === globalActivehabbitId) {
@@ -137,6 +137,25 @@ function addDays(event) {
     })
     rerender(globalActivehabbitId);
     form['comment'].value = '';
+    saveData();
+}
+
+function deleteDay(i) {
+    habbits = habbits.map(habbit => {
+        if (habbit.id === globalActivehabbitId) {
+            habbit.days.splice(i, 1);
+            console.log({
+                ...habbit
+            });
+            return {
+                ...habbit,
+                days: habbit.days
+            };
+        }
+        return habbit;
+        console.log(`habbits in deleteDay: ${habbits}`);
+    })
+    rerender(globalActivehabbitId);
     saveData();
 }
 
