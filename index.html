@@ -19,7 +19,7 @@
       <nav class="menu">
         <div class="menu__list">
         </div>
-        <button class="menu__add">
+        <button class="menu__add" onclick="togglePopup(event)">
           <img src="/images/add.svg" alt="Добавить привычку" />
         </button>
       </nav>
@@ -43,7 +43,7 @@
         </div>
         <div class="habbit">
           <div class="habbit__day" id="lastday"></div>
-          <form class="habbit__form" onsubmit="addDays(event)">
+          <form class="habbit__form" onsubmit="addDays()">
             <input name="comment" class="input_icon" type="text" placeholder="Комментарий" />
             <img class="input__icon" src="/images/comment.svg" alt="Иконка комментария" />
             <button class="button" type="submit">Готово</button>
@@ -71,7 +71,7 @@
           <input type="number" name="target" placeholder="Цель">
           <button class="button" type="submit">Добавить</button>
         </form>
-        <button class="popup__close">
+        <button class="popup__close" onclick="togglePopup()">
           <img src="./images/close-button.svg" alt="Закрыть попап">
         </button>
       </div>

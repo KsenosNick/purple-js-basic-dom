@@ -16,9 +16,11 @@ const page = {
     content: {
         days: document.querySelector('.days'),
         lastDay: document.getElementById('lastday'),
+    },
+    popup: {
+        cover: document.querySelector('.cover')
     }
 }
-
 /* utils */
 
 function loadData() {
@@ -157,6 +159,10 @@ function deleteDay(i) {
     })
     rerender(globalActivehabbitId);
     saveData();
+}
+
+function togglePopup() {
+    page.popup.cover.classList.toggle("cover_hidden");
 }
 
 /* init */
