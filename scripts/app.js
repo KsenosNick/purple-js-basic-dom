@@ -18,7 +18,8 @@ const page = {
         lastDay: document.getElementById('lastday'),
     },
     popup: {
-        cover: document.querySelector('.cover')
+        cover: document.querySelector('.cover'),
+        iconField: document.querySelector('.popup__form input[name="icon"]')
     }
 }
 /* utils */
@@ -163,6 +164,15 @@ function deleteDay(i) {
 
 function togglePopup() {
     page.popup.cover.classList.toggle("cover_hidden");
+}
+
+/* working with habbits */
+
+function setIcon(context, icon) {
+    page.popup.iconField.value = icon;
+    const activeIcon = document.querySelector('.icon.icon_active');
+    activeIcon.classList.remove('icon_active');
+    context.classList.add('icon_active');
 }
 
 /* init */
