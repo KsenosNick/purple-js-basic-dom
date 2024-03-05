@@ -38,12 +38,10 @@
         </div>
       </header>
       <main>
-        <div class="days">
-
-        </div>
+        <div class="days"></div>
         <div class="habbit">
           <div class="habbit__day" id="lastday"></div>
-          <form class="habbit__form" onsubmit="addDays()">
+          <form class="habbit__form" onsubmit="addDays(event)">
             <input name="comment" class="input_icon" type="text" placeholder="Комментарий" />
             <img class="input__icon" src="/images/comment.svg" alt="Иконка комментария" />
             <button class="button" type="submit">Готово</button>
@@ -66,7 +64,7 @@
             <img src="./images/food.svg" alt="Еда">
           </button>
         </div>
-        <form class="popup__form">
+        <form class="popup__form" onsubmit="addHabbit(event)">
           <input type="text" name="name" placeholder="Название">
           <input type="text" name="icon" hidden placeholder="Иконка" value="sport">
           <input type="number" name="target" placeholder="Цель">
