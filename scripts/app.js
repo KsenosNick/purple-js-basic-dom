@@ -144,6 +144,10 @@ function rerenderContent(activeHabbit) {
 function rerender(activeHabbitId) {
     globalActiveHabbitId = activeHabbitId;
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
+    if (!activeHabbit) {
+        return;
+    }
+    document.location.hash = activeHabbitId;
     rerenderMenu(activeHabbit);
     rerenderHead(activeHabbit);
     rerenderContent(activeHabbit);
@@ -221,6 +225,12 @@ function addHabbit(event) {
 
 (() => {
     loadData();
-    rerender(habbits[0].id);
-})()
+    const hashId = Number(document.location.hash.replace('#', ''));
+    const urlhabbit = habbits.find(habbit => habbit.id === hashId);
+    if (urlhabbit) {
+        rerender(urlhabbit.id);
+    } else {
+        rerender(habbits[0].id);
+    }
+})();
 
